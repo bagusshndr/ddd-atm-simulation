@@ -23,6 +23,15 @@ func NewTransaction(userID uint64, flag enum.Flag, userReceiveID uint64, nominal
 	}, nil
 }
 
+func NewTransactions(userID uint64, flag enum.Flag, userReceiveID uint64, nominal float64) (Transaction, error) {
+	return Transaction{
+		UserID:        userID,
+		Flag:          flag,
+		UserRecieveID: userID,
+		Nominal:       nominal,
+	}, nil
+}
+
 func RebuildTransaction(id, userID uint64, flag enum.Flag, userReceiveID uint64, nominal float64) *Transaction {
 	return &Transaction{
 		ID:            id,

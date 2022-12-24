@@ -35,7 +35,13 @@ func NewUser(name string, amount float64) (*User, error) {
 		Name:   name,
 		Amount: amount,
 	}, nil
+}
 
+func NewUsers(name string, amount float64) (User, error) {
+	return User{
+		Name:   name,
+		Amount: amount,
+	}, nil
 }
 
 func RebuildUser(id uint64, name string, amount float64) *User {

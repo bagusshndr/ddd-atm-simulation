@@ -9,6 +9,7 @@ import (
 
 	_ "github.com/go-sql-driver/mysql"
 
+	_CobraHandler "ddd-atm-simulation/cmd/app/clear"
 	_Repo "ddd-atm-simulation/internal/infrastructure/database/mysql/repository"
 	_Ucase "ddd-atm-simulation/internal/usecase"
 
@@ -178,8 +179,7 @@ func main() {
 	tr := _Repo.NewMysqlTransactionRepository(dbConn)
 	au := _Ucase.NewUserUsecase(ar)
 	tu := _Ucase.NewTransactionUsecase(ar, tr)
-	_CobraHanlder.
-		fmt.Printf("\nWelcome to my ATM Simulator\n")
-	transaction()
-
+	handler := _CobraHandler.NewTransaction(au, tu)
+	fmt.Printf("\nWelcome to my ATM Simulator\n")
+	handler.Transaction()
 }

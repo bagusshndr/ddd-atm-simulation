@@ -12,11 +12,11 @@ import (
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
 
-	_HttpDelivery "ddd-/internal/delivery/handler"
-	routers "ddd-/internal/delivery/router"
-	"ddd-/internal/infrastructure/database/mysql/model"
-	_Repo "ddd-/internal/infrastructure/database/mysql/repository"
-	_Ucase "ddd-/internal/usecase"
+	_HttpDelivery "ddd-atm-simulation/internal/delivery/handler"
+	routers "ddd-atm-simulation/internal/delivery/router"
+	"ddd-atm-simulation/internal/infrastructure/database/mysql/model"
+	_Repo "ddd-atm-simulation/internal/infrastructure/database/mysql/repository"
+	_Ucase "ddd-atm-simulation/internal/usecase"
 )
 
 func main() {

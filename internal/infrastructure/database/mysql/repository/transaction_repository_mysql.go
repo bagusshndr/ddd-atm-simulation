@@ -38,7 +38,7 @@ func (m *transactionRepositoryMYSQL) fetch(query string, args ...interface{}) (a
 			&t.ID,
 			&t.UserID,
 			&t.Flag,
-			&t.UserRecieveID,
+			// &t.UserRecieveID,
 			&t.Nominal,
 		)
 
@@ -55,7 +55,7 @@ func (m *transactionRepositoryMYSQL) fetch(query string, args ...interface{}) (a
 			transactionDTO.ID,
 			transactionDTO.UserID,
 			transactionDTO.Flag,
-			transactionDTO.UserRecieveID,
+			0,
 			transactionDTO.Nominal,
 		))
 	}
@@ -64,7 +64,7 @@ func (m *transactionRepositoryMYSQL) fetch(query string, args ...interface{}) (a
 }
 
 func (m *transactionRepositoryMYSQL) GetTransaction() (res aggregate.Transactions, err error) {
-	query := `SELECT id, user_id, flag, user_receive_id, nominal FROM transactions`
+	query := `SELECT id, user_id, flag, nominal FROM transactions`
 
 	res, err = m.fetch(query)
 	if err != nil {

@@ -10,16 +10,20 @@ type userUsecase struct {
 }
 
 func (u *userUsecase) GetUser() (res aggregate.Users, err error) {
-	res = aggregate.Users{}
+
 	return res, nil
 }
 
 func (u *userUsecase) CreateUser(user aggregate.User) (uint64, error) {
-	return 0, nil
+	uid, err := u.repoUser.CreateUser(user)
+	if err != nil {
+		return 0, err
+	}
+	return uid, nil
 }
 
 func (u *userUsecase) GetUserByID(id uint64) (res aggregate.Users, err error) {
-	res = aggregate.Users{}
+	res, _ = u.repoUser.GetUserByID(id)
 	return res, nil
 }
 
