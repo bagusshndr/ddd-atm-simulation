@@ -1,8 +1,8 @@
 package handler
 
 // import (
-// 	"ddd-to-do-list/internal/aggregate"
-// 	"ddd-to-do-list/internal/valueobject"
+// 	"ddd-atm-simulation/internal/aggregate"
+// 	"ddd-atm-simulation/internal/valueobject"
 // )
 
 // type ProductResponses []ProductResponse

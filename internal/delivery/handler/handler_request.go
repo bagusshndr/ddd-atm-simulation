@@ -1,8 +1,8 @@
 package handler
 
 import (
-	"ddd-to-do-list/internal/aggregate"
-	"ddd-to-do-list/internal/enum"
+	"ddd-atm-simulation/internal/aggregate"
+	"ddd-atm-simulation/internal/enum"
 )
 
 type ReqCreateReviews []ReqCreateReview

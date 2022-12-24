@@ -2,15 +2,15 @@ package main
 
 import (
 	"database/sql"
-	"ddd-to-do-list/internal/infrastructure/database/mysql/model"
+	"ddd-atm-simulation/internal/infrastructure/database/mysql/model"
 	"fmt"
 	"log"
 	"os"
 
 	_ "github.com/go-sql-driver/mysql"
 
-	_Repo "ddd-to-do-list/internal/infrastructure/database/mysql/repository"
-	_Ucase "ddd-to-do-list/internal/usecase"
+	_Repo "ddd-atm-simulation/internal/infrastructure/database/mysql/repository"
+	_Ucase "ddd-atm-simulation/internal/usecase"
 
 	"github.com/joho/godotenv"
 	"gorm.io/driver/mysql"

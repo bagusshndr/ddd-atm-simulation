@@ -1,6 +1,6 @@
 package repository
 
-import "ddd-to-do-list/internal/aggregate"
+import "ddd-atm-simulation/internal/aggregate"
 
 type TransactionRepository interface {
 	GetTransaction() (res aggregate.Transactions, err error)

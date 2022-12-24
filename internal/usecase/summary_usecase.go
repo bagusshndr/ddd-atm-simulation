@@ -1,7 +1,7 @@
 package usecase
 
 import (
-	"ddd-to-do-list/internal/valueobject"
+	"ddd-atm-simulation/internal/valueobject"
 )
 
 type SummaryUsecase interface {

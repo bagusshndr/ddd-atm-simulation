@@ -1,8 +1,8 @@
 package router
 
 import (
-	"ddd-to-do-list/internal/delivery/handler"
-	"ddd-to-do-list/internal/usecase"
+	"ddd-atm-simulation/internal/delivery/handler"
+	"ddd-atm-simulation/internal/usecase"
 
 	"github.com/labstack/echo/v4"
 )

@@ -1,6 +1,6 @@
 package usecase
 
-import "ddd-to-do-list/internal/aggregate"
+import "ddd-atm-simulation/internal/aggregate"
 
 type TransactionUsecase interface {
 	CreateTransaction(transcation aggregate.Transaction) error

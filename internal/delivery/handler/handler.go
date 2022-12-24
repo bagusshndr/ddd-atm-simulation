@@ -1,8 +1,8 @@
 package handler
 
 import (
-	"ddd-to-do-list/internal/shared"
-	"ddd-to-do-list/internal/usecase"
+	"ddd-atm-simulation/internal/shared"
+	"ddd-atm-simulation/internal/usecase"
 	"log"
 
 	"github.com/labstack/echo/v4"

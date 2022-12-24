@@ -1,6 +1,6 @@
 package repository
 
-import "ddd-to-do-list/internal/aggregate"
+import "ddd-atm-simulation/internal/aggregate"
 
 type UserRepository interface {
 	GetUser() (res aggregate.Users, err error)

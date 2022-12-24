@@ -1,7 +1,7 @@
 package clear
 
 import (
-	"ddd-to-do-list/internal/usecase"
+	"ddd-atm-simulation/internal/usecase"
 	"fmt"
 )
 

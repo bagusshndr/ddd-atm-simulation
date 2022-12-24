@@ -1,8 +1,8 @@
 package repository
 
 // import (
-// 	"ddd-to-do-list/internal/aggregate"
-// 	"ddd-to-do-list/internal/repository"
+// 	"ddd-atm-simulation/internal/aggregate"
+// 	"ddd-atm-simulation/internal/repository"
 // 	"errors"
 // 	"regexp"
 // 	"testing"

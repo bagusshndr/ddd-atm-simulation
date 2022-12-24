@@ -1,7 +1,7 @@
 package aggregate
 
 import (
-	"ddd-to-do-list/internal/enum"
+	"ddd-atm-simulation/internal/enum"
 )
 
 type Transactions []*Transaction

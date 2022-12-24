@@ -2,9 +2,9 @@ package repository
 
 import (
 	"database/sql"
-	"ddd-to-do-list/internal/aggregate"
-	"ddd-to-do-list/internal/infrastructure/database/mysql/model"
-	"ddd-to-do-list/internal/repository"
+	"ddd-atm-simulation/internal/aggregate"
+	"ddd-atm-simulation/internal/infrastructure/database/mysql/model"
+	"ddd-atm-simulation/internal/repository"
 	"errors"
 
 	"github.com/sirupsen/logrus"
