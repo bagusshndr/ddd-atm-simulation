@@ -7,7 +7,7 @@ func (f Flag) String() string {
 	case Deposit:
 		return "Deposit"
 	case Withdram:
-		return "Withdram"
+		return "Withdraw"
 	case Transfer:
 		return "Transfer"
 	}
