@@ -3,6 +3,7 @@ package usecase
 import (
 	"ddd-atm-simulation/internal/aggregate"
 	"ddd-atm-simulation/internal/repository"
+	"log"
 )
 
 type transactionUsecase struct {
@@ -37,12 +38,21 @@ func (u *transactionUsecase) CreateTransaction(transaction aggregate.Transaction
 		user[0].DecreaseAmount(transaction.Nominal)
 		u.repoUser.UpdateUser(*user[0])
 	case 3:
-		_, err := u.repoUser.GetUserByID(transaction.UserRecieveID)
+		user, _ := u.repoUser.GetUserByID(transaction.UserID)
 		if err != nil {
 			return err
 		}
-		u.repoTransaction.CreateTransaction(transaction)
-		u.repoUser.GetUserByID(user[0].ID)
+		userReceive, _ := u.repoUser.GetUserByID(transaction.UserRecieveID)
+		_, err := u.repoTransaction.CreateTransaction(transaction)
+		if err != nil {
+			return err
+		}
+		log.Println(transaction.UserRecieveID)
+		log.Println(userReceive[0].Name)
+		user[0].DecreaseAmount(transaction.Nominal)
+		userReceive[0].IncreaseAmount(transaction.Nominal)
+		u.repoUser.UpdateUser(*user[0])
+		u.repoUser.UpdateUser(*userReceive[0])
 	}
 
 	return nil

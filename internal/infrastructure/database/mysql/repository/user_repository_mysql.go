@@ -75,6 +75,16 @@ func (m *userRepositoryMYSQL) GetUserByID(id uint64) (res aggregate.Users, err e
 
 	res, err = m.fetch(query, id)
 	if err != nil {
+		return nil, errors.New("Error")
+	}
+	return
+}
+
+func (m *userRepositoryMYSQL) GetUserByName(name string) (res aggregate.Users, err error) {
+	query := `SELECT id, name, amount FROM users WHERE name = ? LIMIT 1`
+
+	res, err = m.fetch(query, name)
+	if err != nil {
 		return nil, errors.New("")
 	}
 	return

@@ -1,6 +1,8 @@
 package model
 
-import "ddd-atm-simulation/internal/enum"
+import (
+	"ddd-atm-simulation/internal/enum"
+)
 
 type TransactionDTO struct {
 	ID            uint64    `gorm:"id"`

@@ -18,7 +18,7 @@ func NewTransaction(userID uint64, flag enum.Flag, userReceiveID uint64, nominal
 	return &Transaction{
 		UserID:        userID,
 		Flag:          flag,
-		UserRecieveID: userID,
+		UserRecieveID: userReceiveID,
 		Nominal:       nominal,
 	}, nil
 }

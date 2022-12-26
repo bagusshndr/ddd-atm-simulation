@@ -23,7 +23,15 @@ func (u *userUsecase) CreateUser(user aggregate.User) (uint64, error) {
 }
 
 func (u *userUsecase) GetUserByID(id uint64) (res aggregate.Users, err error) {
-	res, _ = u.repoUser.GetUserByID(id)
+	res, err = u.repoUser.GetUserByID(id)
+	if err != nil {
+		return nil, err
+	}
+	return res, nil
+}
+
+func (u *userUsecase) GetUserByName(name string) (res aggregate.Users, err error) {
+	res, _ = u.repoUser.GetUserByName(name)
 	return res, nil
 }
 
