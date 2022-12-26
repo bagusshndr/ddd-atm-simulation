@@ -50,10 +50,10 @@ backLogin:
 	case 1:
 	backSignin:
 		fmt.Printf("\nPlease enter your id: ")
-		fmt.Scan(&t.reqUser.ID)
-		getUser, err := t.usecaseUser.GetUserByID(t.reqUser.ID)
+		fmt.Scan(&t.reqUser.Name)
+		getUser, err := t.usecaseUser.GetUserByName(t.reqUser.Name)
 		if err != nil {
-			fmt.Printf("User ID not found")
+			fmt.Printf("User not found")
 			goto backSignin
 		}
 
@@ -114,6 +114,7 @@ backLogin:
 			// Withdraw
 			fmt.Printf("Please enter amount to withdraw: ")
 			fmt.Scan(&t.reqTransaction.Nominal)
+
 			getAmount, _ := t.usecaseUser.GetUserByID(t.reqUser.ID)
 			if getAmount[0].Amount < t.reqTransaction.Nominal {
 				fmt.Printf("Your balance is not enought to withdraw")
@@ -133,6 +134,7 @@ backLogin:
 					goto backWithdraw
 				}
 			}
+
 			a, _ := aggregate.NewTransactions(getUser[0].ID, 2, 0, t.reqTransaction.Nominal)
 			t.usecaseTransaction.CreateTransaction(a)
 			getTransaction, _ := t.usecaseUser.GetUserByID(t.reqUser.ID)
@@ -203,9 +205,11 @@ backLogin:
 					goto backLogin
 				}
 			}
+
 		backTransfer:
 			fmt.Print("Please enter amount to transfer: ")
 			fmt.Scan(&t.reqTransaction.Nominal)
+
 			getAmount, _ := t.usecaseUser.GetUserByID(t.reqUser.ID)
 			if getAmount[0].Amount < t.reqTransaction.Nominal {
 				fmt.Printf("Your balance is not enought to transfer")
@@ -227,7 +231,6 @@ backLogin:
 			}
 
 			a, _ := aggregate.NewTransactions(getUser[0].ID, 2, t.reqTransaction.UserReceiveID, t.reqTransaction.Nominal)
-
 			errTransaction := t.usecaseTransaction.CreateTransaction(a)
 			if errTransaction != nil {
 				fmt.Printf("Failed to transfer")
@@ -275,9 +278,9 @@ backLogin:
 		switch choice {
 		case 1:
 			fmt.Printf("Your balance is: $%.2f", getUser[0].Amount)
-
 			fmt.Printf("\nDo you want another transaction?\nPress 1 to proceed and 2 to logout\n\n")
 			fmt.Scan(&anotherTransaction)
+
 			switch anotherTransaction {
 			case 1:
 				fmt.Printf("\nEnter any option to be served %s !\n\n", getUser[0].Name)
@@ -294,7 +297,6 @@ backLogin:
 		case 2:
 			// Deposit
 			fmt.Printf("Please enter amount to deposit: ")
-
 			fmt.Scan(&t.reqTransaction.Nominal)
 
 			a, _ := aggregate.NewTransactions(getUser[0].ID, 1, 0, t.reqTransaction.Nominal)
@@ -318,6 +320,7 @@ backLogin:
 			default:
 				fmt.Println("\nThanks for using our service!!! \nHave a nice day")
 			}
+
 		case 3:
 			// Withdraw
 		backWithdraw2:

@@ -4,6 +4,7 @@ import (
 	"ddd-atm-simulation/internal/aggregate"
 	"ddd-atm-simulation/internal/enum"
 	"ddd-atm-simulation/internal/repository"
+	"ddd-atm-simulation/testdata/data"
 	"errors"
 	"regexp"
 	"testing"
@@ -36,9 +37,9 @@ func (t *transactionRepositoryMysqlTest) TestGetTransaction() {
 
 		t.mock.ExpectQuery(regexp.QuoteMeta(query)).WillReturnRows(rows)
 
-		actualProduct, err := t.transactionRepository.GetTransaction()
+		actualTransaction, err := t.transactionRepository.GetTransaction()
 
-		t.NotNil(actualProduct)
+		t.NotNil(actualTransaction)
 		t.NoError(err)
 	})
 	t.Run("failed", func() {
@@ -68,9 +69,9 @@ func (t *transactionRepositoryMysqlTest) TestGetTransactionByID() {
 
 		t.mock.ExpectQuery(regexp.QuoteMeta(query)).WithArgs(transaction.ID).WillReturnRows(rows)
 
-		actualProduct, err := t.transactionRepository.GetTransactionByID(transaction.ID)
+		actualTransaction, err := t.transactionRepository.GetTransactionByID(transaction.ID)
 
-		t.NotNil(actualProduct)
+		t.NotNil(actualTransaction)
 		t.NoError(err)
 	})
 	t.Run("failed", func() {
@@ -83,7 +84,39 @@ func (t *transactionRepositoryMysqlTest) TestGetTransactionByID() {
 	})
 }
 
-func TestProductRepositoryMySQL(t *testing.T) {
+func (t *transactionRepositoryMysqlTest) TestCreateTransaction() {
+	t.Run("success", func() {
+		transaction := data.Transaction()
+		t.mock.ExpectExec("INSERT INTO transactions").WithArgs(transaction.ID, transaction.Flag, transaction.UserRecieveID, transaction.Nominal).WillReturnResult(sqlmock.NewResult(1, 1))
+		_, err := t.transactionRepository.CreateTransaction(*transaction)
+		t.NoError(err)
+	})
+	t.Run("failed", func() {
+		transaction := data.Transaction()
+		t.mock.ExpectExec("INSERT INTO transactions").WithArgs(transaction.ID, transaction.Flag, transaction.UserRecieveID, transaction.Nominal).WillReturnError(errors.New("eror"))
+		_, err := t.transactionRepository.CreateTransaction(*transaction)
+		t.Error(err)
+	})
+
+}
+
+func (t *transactionRepositoryMysqlTest) TestDeleteTransaction() {
+	t.Run("success", func() {
+		transaction := data.Transaction()
+		t.mock.ExpectExec("DELETE FROM transactions").WithArgs(transaction.ID).WillReturnResult(sqlmock.NewResult(1, 1))
+		err := t.transactionRepository.DeleteTransaction(transaction.ID)
+		t.NoError(err)
+	})
+	t.Run("failed", func() {
+		transaction := data.Transaction()
+		t.mock.ExpectExec("DELETE FROM transactions").WithArgs(transaction.ID).WillReturnError(errors.New("eror"))
+		err := t.transactionRepository.DeleteTransaction(transaction.ID)
+		t.Error(err)
+	})
+
+}
+
+func TestTransactionRepositoryMySQL(t *testing.T) {
 	db, mock, _ := sqlmock.New()
 
 	suite.Run(t, &transactionRepositoryMysqlTest{

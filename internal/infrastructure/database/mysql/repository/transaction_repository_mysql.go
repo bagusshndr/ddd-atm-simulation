@@ -86,27 +86,27 @@ func (m *transactionRepositoryMYSQL) GetTransactionByID(id uint64) (res aggregat
 }
 
 func (m *transactionRepositoryMYSQL) CreateTransaction(transaction aggregate.Transaction) (uint64, error) {
-	if transaction.Flag == 3 {
-		query := "INSERT INTO transactions (user_id, flag, user_receive_id, nominal) VALUES(?, ?, ?, ?)"
-		res, err := m.db.Exec(
-			query,
-			transaction.UserID,
-			transaction.Flag,
-			transaction.UserRecieveID,
-			transaction.Nominal,
-		)
-		if err != nil {
-			return 0, err
-		}
+	// if transaction.Flag == 3 {
+	// 	query := "INSERT INTO transactions (user_id, flag, user_receive_id, nominal) VALUES(?, ?, ?, ?)"
+	// 	res, err := m.db.Exec(
+	// 		query,
+	// 		transaction.UserID,
+	// 		transaction.Flag,
+	// 		transaction.UserRecieveID,
+	// 		transaction.Nominal,
+	// 	)
+	// 	if err != nil {
+	// 		return 0, err
+	// 	}
 
-		id, err := res.LastInsertId()
-		if err != nil {
-			return 0, err
-		}
-		uId := uint64(id)
+	// 	id, err := res.LastInsertId()
+	// 	if err != nil {
+	// 		return 0, err
+	// 	}
+	// 	uId := uint64(id)
 
-		return uId, nil
-	}
+	// 	return uId, nil
+	// }
 
 	query := "INSERT INTO transactions (user_id, flag, user_receive_id, nominal) VALUES(?, ?, ?, ?)"
 	res, err := m.db.Exec(
