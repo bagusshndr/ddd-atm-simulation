@@ -50,8 +50,8 @@ backLogin:
 	case 1:
 	backSignin:
 		fmt.Printf("\nPlease enter your id: ")
-		fmt.Scan(&t.reqUser.Name)
-		getUser, err := t.usecaseUser.GetUserByName(t.reqUser.Name)
+		fmt.Scan(&t.reqUser.ID)
+		getUser, err := t.usecaseUser.GetUserByID(t.reqUser.ID)
 		if err != nil {
 			fmt.Printf("User not found")
 			goto backSignin
@@ -63,7 +63,6 @@ backLogin:
 		fmt.Printf("3. Withdraw\n")
 		fmt.Printf("4. Transfer\n\n")
 		fmt.Scan(&choice)
-	back:
 		switch choice {
 		case 1:
 			fmt.Printf("Your balance is: $%.2f", getUser[0].Amount)
@@ -72,14 +71,7 @@ backLogin:
 			fmt.Scan(&anotherTransaction)
 			switch anotherTransaction {
 			case 1:
-				fmt.Printf("\nEnter any option to be served %s !\n\n", getUser[0].Name)
-				fmt.Printf("1. Check Amount\n")
-				fmt.Printf("2. Desposit\n")
-				fmt.Printf("3. Withdraw\n")
-				fmt.Printf("4. Transfer\n")
-				fmt.Printf("5. Logout\n\n")
-				fmt.Scan(&choice)
-				goto back
+				goto backSignin
 			default:
 				fmt.Println("\nThanks for using our service!!! \nHave a nice day")
 			}
@@ -98,14 +90,7 @@ backLogin:
 
 			switch anotherTransaction {
 			case 1:
-				fmt.Printf("\nEnter any option to be served %s !\n\n", getTransaction[0].Name)
-				fmt.Printf("1. Check Amount\n")
-				fmt.Printf("2. Desposit\n")
-				fmt.Printf("3. Withdraw\n")
-				fmt.Printf("4. Transfer\n")
-				fmt.Printf("5. Logout\n\n")
-				fmt.Scan(&choice)
-				goto back
+				goto backSignin
 			default:
 				fmt.Println("\nThanks for using our service!!! \nHave a nice day")
 			}
@@ -122,14 +107,7 @@ backLogin:
 				fmt.Scan(&anotherTransaction)
 				switch anotherTransaction {
 				case 1:
-					fmt.Printf("\nEnter any option to be served %s !\n\n", getUser[0].Name)
-					fmt.Printf("1. Check Amount\n")
-					fmt.Printf("2. Desposit\n")
-					fmt.Printf("3. Withdraw\n")
-					fmt.Printf("4. Transfer\n")
-					fmt.Printf("5. Logout\n\n")
-					fmt.Scan(&choice)
-					goto back
+					goto backSignin
 				default:
 					goto backWithdraw
 				}
@@ -144,14 +122,7 @@ backLogin:
 			fmt.Scan(&anotherTransaction)
 			switch anotherTransaction {
 			case 1:
-				fmt.Printf("\nEnter any option to be served %s !\n\n", getUser[0].Name)
-				fmt.Printf("1. Check Amount\n")
-				fmt.Printf("2. Desposit\n")
-				fmt.Printf("3. Withdraw\n")
-				fmt.Printf("4. Transfer\n")
-				fmt.Printf("5. Logout\n\n")
-				fmt.Scan(&choice)
-				goto back
+				goto backSignin
 			default:
 				fmt.Println("\nThanks for using our service!!! \nHave a nice day")
 			}
@@ -170,14 +141,7 @@ backLogin:
 				case 1:
 					goto backUser
 				case 2:
-					fmt.Printf("\nEnter any option to be served %s !\n\n", getUser[0].Name)
-					fmt.Printf("1. Check Amount\n")
-					fmt.Printf("2. Desposit\n")
-					fmt.Printf("3. Withdraw\n")
-					fmt.Printf("4. Transfer\n")
-					fmt.Printf("5. Logout\n\n")
-					fmt.Scan(&choice)
-					goto back
+					goto backSignin
 				default:
 					fmt.Println("\nThanks for using our service!!! \nHave a nice day \n\n\n\n\n ", getUser[0].Name)
 					goto backLogin
@@ -192,14 +156,7 @@ backLogin:
 				case 1:
 					goto backUser
 				case 2:
-					fmt.Printf("\nEnter any option to be served %s !\n\n", getUser[0].Name)
-					fmt.Printf("1. Check Amount\n")
-					fmt.Printf("2. Desposit\n")
-					fmt.Printf("3. Withdraw\n")
-					fmt.Printf("4. Transfer\n")
-					fmt.Printf("5. Logout\n\n")
-					fmt.Scan(&choice)
-					goto back
+					goto backSignin
 				default:
 					fmt.Println("\nThanks for using our service!!! \nHave a nice day \n\n\n\n\n ", getUser[0].Name)
 					goto backLogin
@@ -217,14 +174,7 @@ backLogin:
 				fmt.Scan(&anotherTransaction)
 				switch anotherTransaction {
 				case 1:
-					fmt.Printf("\nEnter any option to be served %s !\n\n", getUser[0].Name)
-					fmt.Printf("1. Check Amount\n")
-					fmt.Printf("2. Desposit\n")
-					fmt.Printf("3. Withdraw\n")
-					fmt.Printf("4. Transfer\n")
-					fmt.Printf("5. Logout\n\n")
-					fmt.Scan(&choice)
-					goto back
+					goto backSignin
 				default:
 					goto backTransfer
 				}
@@ -242,14 +192,7 @@ backLogin:
 			fmt.Scan(&anotherTransaction)
 			switch anotherTransaction {
 			case 1:
-				fmt.Printf("\nEnter any option to be served %s !\n\n", getUser[0].Name)
-				fmt.Printf("1. Check Amount\n")
-				fmt.Printf("2. Desposit\n")
-				fmt.Printf("3. Withdraw\n")
-				fmt.Printf("4. Transfer\n")
-				fmt.Printf("5. Logout\n\n")
-				fmt.Scan(&choice)
-				goto back
+				goto backSignin
 			default:
 				fmt.Println("\nThanks for using our service!!! \nHave a nice day")
 			}

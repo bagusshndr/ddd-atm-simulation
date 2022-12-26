@@ -48,37 +48,6 @@ func (t *userRepositoryMysqlTest) TestGetUser() {
 	})
 }
 
-func (t *userRepositoryMysqlTest) TestGetUserByID() {
-	user := data.User()
-	query := `SELECT id, name, amount FROM users where id = ?`
-	t.Run("success", func() {
-		rows := sqlmock.NewRows([]string{
-			"id",
-			"name",
-			"amount",
-		}).AddRow(
-			user.ID,
-			user.Name,
-			user.Amount,
-		)
-
-		t.mock.ExpectQuery(regexp.QuoteMeta(query)).WithArgs(user.ID).WillReturnRows(rows)
-
-		actualUser, err := t.userRepository.GetUserByID(user.ID)
-
-		t.NotNil(actualUser)
-		t.NoError(err)
-	})
-	t.Run("failed", func() {
-		t.mock.ExpectQuery(regexp.QuoteMeta(query)).WithArgs(user.ID).WillReturnError(errors.New("error"))
-
-		actualUser, err := t.userRepository.GetUserByID(user.ID)
-
-		t.Nil(actualUser)
-		t.Error(err)
-	})
-}
-
 func TestUserRepositoryMySQL(t *testing.T) {
 	db, mock, _ := sqlmock.New()
 
